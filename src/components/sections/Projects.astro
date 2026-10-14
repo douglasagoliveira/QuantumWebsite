@@ -1,0 +1,156 @@
+---
+const projects = [
+  'Sky house The Rocks',
+  'Rockdale',
+  'Lynches Road Netball Courts',
+  'Melita Stadium',
+  'The Eveleigh by the Grounds',
+  'Palas',
+  'Berowra Tennis Courts',
+];
+
+const quote = `Ever since I graduated and began working as an engineer, I witnessed firsthand the deep frustration of clients across Sydney: I saw budgets blown apart by a lack of early electrical planning, builds halted by mid-construction wiring changes, and an architect's refined design compromised simply because the installer didn't understand smart system infrastructure.
+
+Quantum was born to eliminate that friction and serve as the single point of accountability the industry was missing. We embraced the challenge of mastering the most complex emerging technologies from high-end lighting control, security integration, to commercial-grade sports lighting. We don't just pull cables; we deliver the exact engineered solution your project demands, protected against budget traps and timeline surprises. We stand alongside our partners before, during, and long after handover, building relationships rooted in long-term trust. That is the true heart of Quantum.`;
+---
+
+<section class="projects" aria-label="Some of Our Projects">
+  <span class="energy" data-energy aria-hidden="true"></span>
+  <div class="pin">
+    <div class="head">
+      <h2 class="title" data-reveal>Some of Our Projects</h2>
+    </div>
+    <ul class="track" data-hgallery>
+      {projects.map((name, i) => (
+        <li class="tile" tabindex="0">
+          <span class="tile__index">{String(i + 1).padStart(2, '0')}</span>
+          <span class="tile__beam" aria-hidden="true"></span>
+          <span class="tile__name">{name}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<section class="quote" aria-label="Geovani Percurandi">
+  <div class="spot" aria-hidden="true"></div>
+  <div class="wrap">
+    <blockquote class="block" data-reveal>
+      {quote.split('\n\n').map((p) => <p>{p}</p>)}
+    </blockquote>
+    <figcaption class="by" data-reveal>
+      <span class="by__name">Geovani Percurandi</span>
+      <span class="by__role">Managing Director at Quantum Electrical &amp; Technological Services</span>
+    </figcaption>
+  </div>
+</section>
+
+<style>
+  .projects {
+    position: relative;
+    background: var(--ink);
+    overflow: hidden;
+  }
+  .energy {
+    position: absolute; top: 0; left: 0; right: 0; height: 1px; z-index: 2;
+    background: linear-gradient(90deg, transparent, var(--electric) 35%, var(--volt) 65%, transparent);
+    box-shadow: 0 0 24px 1px rgb(61 139 255 / .45);
+    transform: scaleX(0);
+  }
+  .pin {
+    width: 100%;
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    gap: 2.5rem; padding: 6vh 0;
+  }
+  .head { width: min(1200px, 92vw); margin: 0 auto; }
+  .title { margin: 0; font: 300 clamp(1.9rem, 3.4vw, 3.2rem) / 1.1 var(--serif); }
+
+  .track {
+    list-style: none; margin: 0; padding: 0 4vw;
+    display: flex; gap: 1.25rem;
+    width: max-content;
+  }
+  .tile {
+    position: relative;
+    display: grid; align-content: end; gap: .5rem;
+    width: clamp(16rem, 26vw, 24rem);
+    aspect-ratio: 3 / 4;
+    padding: 1.6rem 1.4rem;
+    border-radius: 1.25rem;
+    border: 1px solid var(--line);
+    background:
+      radial-gradient(120% 60% at 50% -10%, rgb(255 255 255 / .07), transparent 60%),
+      linear-gradient(180deg, var(--ink-3), var(--ink-2));
+    overflow: hidden;
+    outline: none;
+    transition: transform .45s cubic-bezier(.2,.7,.2,1), border-color .35s, box-shadow .55s;
+    will-change: transform;
+  }
+  .tile__index {
+    position: absolute; top: 1.3rem; left: 1.4rem;
+    font-size: .62rem; letter-spacing: .22em;
+    color: rgb(233 238 251 / .45);
+    transition: color .35s;
+  }
+  .tile__beam {
+    position: absolute; top: -30%; left: 50%; translate: -50% 0;
+    width: 65%; height: 70%;
+    background: radial-gradient(closest-side, rgb(255 194 75 / .35), transparent 75%);
+    opacity: .18;
+    filter: blur(6px);
+    transition: opacity .4s;
+  }
+  .tile__name {
+    font: 300 clamp(1.4rem, 1.9vw, 1.9rem) / 1.1 var(--serif);
+    color: rgb(233 238 251 / .82);
+    transition: color .35s, text-shadow .35s;
+  }
+  .tile:hover, .tile:focus-visible {
+    transform: translateY(-10px);
+    border-color: rgb(255 194 75 / .45);
+    box-shadow: 0 0 0 1px rgb(255 194 75 / .12), 0 40px 90px -40px rgb(255 194 75 / .55);
+  }
+  .tile:hover .tile__beam, .tile:focus-visible .tile__beam { opacity: 1; }
+  .tile:hover .tile__name, .tile:focus-visible .tile__name {
+    color: #fff;
+    text-shadow: 0 0 30px rgb(255 194 75 / .4);
+  }
+  .tile:hover .tile__index, .tile:focus-visible .tile__index { color: #ffe3a3; }
+
+  /* ---------- Quote ---------- */
+  .quote {
+    position: relative;
+    padding: clamp(5rem, 14vh, 10rem) 0;
+    background: linear-gradient(180deg, var(--ink-2), var(--ink));
+    overflow: hidden;
+  }
+  .spot {
+    position: absolute; inset: -20% -10%;
+    background: radial-gradient(45rem 30rem at 30% 20%, rgb(61 139 255 / .14), transparent 70%);
+    pointer-events: none;
+  }
+  .wrap { position: relative; width: min(880px, 92vw); margin: 0 auto; }
+  .block { margin: 0; display: grid; gap: 1.4rem; }
+  .block p {
+    margin: 0;
+    font: 300 clamp(1.15rem, 2vw, 1.6rem) / 1.5 var(--serif);
+    font-style: italic;
+    color: rgb(233 238 251 / .88);
+  }
+  .block p::before { content: '“'; color: var(--volt); margin-right: .1em; }
+  .block p:last-child::after { content: '”'; color: var(--volt); margin-left: .1em; }
+
+  .by { display: grid; gap: .3rem; margin-top: 2.2rem; padding-top: 1.4rem; border-top: 1px solid var(--line); }
+  .by__name { font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; color: #fff; }
+  .by__role { font-size: .72rem; color: var(--muted); }
+
+  @media (max-width: 768px) {
+    .pin { min-height: auto; padding: clamp(4rem, 10vh, 7rem) 0; }
+    .track { flex-direction: column; width: auto; padding: 0 4vw; }
+    .tile { width: 100%; aspect-ratio: 16 / 10; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .energy { transform: none; }
+  }
+</style>

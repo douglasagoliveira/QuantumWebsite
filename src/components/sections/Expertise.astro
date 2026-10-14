@@ -1,0 +1,177 @@
+---
+const columns = [
+  {
+    title: 'Installations',
+    items: [
+      'sport lighting',
+      'switchboard upgrades',
+      'power points',
+      'kitchen renovations',
+      'bathroom renovations',
+      'lighting projects',
+      'LED lighting upgrade',
+      'New builds',
+      'granny flats',
+      'safety switches',
+      'exhaust fans',
+      'rangehoods',
+      'ovens',
+      'cooktops',
+      'TV antenas',
+      'TV installations',
+      'Main Switch Board',
+      'Distribution Boards',
+      'Cabling & Reticulation Systems',
+      'UPS Systems',
+      'Electrical Low Voltage systems',
+      'Motor Start and Control',
+      'General & Specialty Lighting',
+      'Emergency Lighting & Monitoring',
+      'Lighting Control',
+      'Equipment Housing',
+      'Earthing systems',
+      'Pump maintenance.',
+    ],
+  },
+  {
+    title: 'Maintenance and repair',
+    items: [
+      '24/7 Emergency call out',
+      'Fault finding',
+      'House/apartment rewiring',
+      'Fault diagnosis',
+      'Safety switches inspection/upgrades',
+      'Data cabling analisys',
+      'Phone line repairs',
+    ],
+  },
+  {
+    title: 'Solution and automation',
+    items: [
+      'Data centre maintenance',
+      'UPS maintenance/upgrades',
+      'CCTV',
+      'IP cameras',
+      'CBUS system maintenance/installation',
+      'Phillips Dynalite home automation',
+      'Phillips HUE installation',
+      'Wireless access point installation',
+      'Home automation',
+    ],
+  },
+];
+---
+
+<section class="knowhow" aria-label="We have know-how for varied demands">
+  <span class="energy" data-energy aria-hidden="true"></span>
+  <div class="wrap knowhow__inner">
+    <h2 class="knowhow__title" data-reveal>We have know-how for varied demands</h2>
+    <p class="knowhow__text" data-reveal>
+      Whether in residence, commerce or industry, Quantum Electrical &amp; Technological Services has the
+      ideal solution for your projects.<br />
+      A qualified team and committed partners serve the whole of Sydney.
+    </p>
+    <a class="cta" href="tel:61406025213" data-reveal>Call now for a free quote</a>
+  </div>
+</section>
+
+<section class="expertise" aria-label="Our expertise">
+  <div class="wrap">
+    <h2 class="expertise__title" data-reveal>Our expertise</h2>
+    <div class="cols" data-reveal-group>
+      {columns.map((col) => (
+        <div class="col">
+          <h3 class="col__title">{col.title}</h3>
+          <ul class="chips">
+            {col.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .knowhow {
+    position: relative;
+    padding: clamp(5rem, 14vh, 10rem) 0;
+    background:
+      radial-gradient(60rem 30rem at 50% 120%, rgb(61 139 255 / .16), transparent 70%),
+      var(--ink);
+    text-align: center;
+    overflow: hidden;
+  }
+  .energy {
+    position: absolute; top: 0; left: 0; right: 0; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--volt) 30%, var(--electric) 60%, transparent);
+    box-shadow: 0 0 24px 1px rgb(255 194 75 / .4);
+    transform: scaleX(0);
+  }
+  .knowhow__inner { width: min(900px, 92vw); margin: 0 auto; display: grid; justify-items: center; gap: 1.5rem; }
+  .knowhow__title { margin: 0; font: 300 clamp(2rem, 4.2vw, 3.6rem) / 1.1 var(--serif); }
+  .knowhow__text { margin: 0; font-size: .85rem; line-height: 1.8; color: var(--muted); }
+
+  .cta {
+    display: inline-flex; align-items: center; gap: .7rem;
+    margin-top: .8rem;
+    padding: .95rem 2rem;
+    border-radius: 999px;
+    font-size: .68rem; letter-spacing: .2em; text-transform: uppercase;
+    color: var(--ink);
+    background: linear-gradient(120deg, #fff, #ffe3a3 40%, var(--volt));
+    text-decoration: none;
+    box-shadow: 0 0 0 0 rgb(255 194 75 / .55), 0 20px 60px -25px rgb(255 194 75 / .8);
+    transition: box-shadow .45s, transform .35s;
+    animation: pulse 2.8s ease-in-out infinite;
+  }
+  .cta:hover, .cta:focus-visible {
+    transform: translateY(-3px);
+    box-shadow: 0 0 0 6px rgb(255 194 75 / .18), 0 26px 70px -24px rgb(255 194 75 / .95);
+    outline: none;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgb(255 194 75 / .45), 0 20px 60px -25px rgb(255 194 75 / .7); }
+    50% { box-shadow: 0 0 0 10px rgb(255 194 75 / 0), 0 20px 70px -22px rgb(255 194 75 / .95); }
+  }
+
+  /* ---------- Expertise ---------- */
+  .expertise { padding: clamp(4rem, 11vh, 8rem) 0 clamp(5rem, 12vh, 9rem); background: var(--ink-2); }
+  .wrap { width: min(1200px, 92vw); margin: 0 auto; }
+  .expertise__title { margin: 0 0 clamp(2rem, 5vh, 3.5rem); font: 300 clamp(1.9rem, 3.4vw, 3.2rem) / 1.1 var(--serif); }
+  .cols { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 1.5rem; align-items: start; }
+  .col {
+    padding: 1.6rem 1.4rem;
+    border-radius: 1.1rem;
+    border: 1px solid var(--line);
+    background: rgb(255 255 255 / .035);
+    transition: border-color .4s, box-shadow .5s;
+  }
+  .col:hover { border-color: rgb(61 139 255 / .4); box-shadow: 0 0 70px -34px rgb(61 139 255 / .9); }
+  .col__title { margin: 0 0 1.1rem; font: 300 1.4rem / 1 var(--serif); color: rgb(233 238 251 / .9); }
+  .chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; }
+  .chips li {
+    padding: .42rem .75rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgb(255 255 255 / .03);
+    font-size: .68rem;
+    color: var(--muted);
+    transition: color .3s, border-color .3s, box-shadow .35s, background .3s;
+    cursor: default;
+  }
+  .chips li:hover {
+    color: #fff;
+    border-color: rgb(255 194 75 / .55);
+    background: rgb(255 194 75 / .08);
+    box-shadow: 0 0 24px -6px rgb(255 194 75 / .75);
+  }
+
+  @media (max-width: 900px) {
+    .cols { grid-template-columns: 1fr; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cta { animation: none; }
+  }
+</style>
