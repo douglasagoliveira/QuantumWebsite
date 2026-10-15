@@ -1,10 +1,25 @@
 ---
+import '@fontsource/urbanist/400.css';
+import '@fontsource/urbanist/500.css';
+import '@fontsource/urbanist/600.css';
+import '@fontsource/urbanist/700.css';
+import '@fontsource/urbanist/800.css';
+import '@fontsource/cormorant-garamond/400.css';
+import '@fontsource/cormorant-garamond/500.css';
+import '@fontsource/cormorant-garamond/600.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '../styles/global.css';
+
 import HeroScroll from '../components/HeroScroll.astro';
-import ServicesLights from '../components/sections/ServicesLights.astro';
-import Story from '../components/sections/Story.astro';
-import Expertise from '../components/sections/Expertise.astro';
-import Projects from '../components/sections/Projects.astro';
-import SiteFooter from '../components/sections/SiteFooter.astro';
+import Pillars from '../components/sections/Pillars';
+import LightingEffect from '../components/sections/LightingEffect';
+import Engineering from '../components/sections/Engineering';
+import Sectors from '../components/sections/Sectors';
+import Projects from '../components/sections/Projects';
+import FounderStatement from '../components/sections/FounderStatement';
+import FinalCta from '../components/sections/FinalCta';
+import Footer from '../components/sections/Footer';
 ---
 <!doctype html>
 <html lang="en">
@@ -13,42 +28,72 @@ import SiteFooter from '../components/sections/SiteFooter.astro';
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Quantum Electrical & Technological Services</title>
     <meta name="description" content="Seamless Integration from Blueprint to Handover." />
+    <link rel="icon" type="image/png" href="/logo-azul-quantum-2026.png" />
     <style is:global>
       :root {
-        --ink: #04070f;
-        --ink-2: #070d1c;
-        --ink-3: #0c1630;
-        --text: #e9eefb;
-        --muted: rgb(233 238 251 / .62);
-        --line: rgb(255 255 255 / .1);
-        --electric: #3d8bff;
-        --volt: #ffc24b;
-        --serif: 'Cormorant Garamond', 'Times New Roman', serif;
-        --sans: 'Inter Variable', Inter, system-ui, sans-serif;
+        --primary: #0d3e69;
+        --secondary: #2c426a;
+        --accent: #00b3a7;
+        --accent-dark: #005852;
+        --text: #46536b;
+        --muted: #738c88;
+        --surface: #ffffff;
+        --surface-soft: #f5f9ff;
+        --surface-tint: #eef6ff;
+        --line: rgb(13 62 105 / 0.12);
+        --line-strong: rgb(13 62 105 / 0.2);
+        --shadow-soft: 0 22px 60px -34px rgb(13 62 105 / 0.18);
+        --shadow-card: 0 28px 80px -42px rgb(13 62 105 / 0.22);
+        --shadow-teal: 0 0 11px 0 #005852;
+        --radius-sm: 12px;
+        --radius-md: 15px;
+        --radius-pill: 999px;
+        --section-space: clamp(4.5rem, 10vw, 8rem);
+        --curve: cubic-bezier(0.22, 1, 0.36, 1);
+        --sans: 'Urbanist', system-ui, sans-serif;
       }
       *, *::before, *::after { box-sizing: border-box; }
+      html {
+        background: var(--surface);
+        color-scheme: light;
+      }
       body {
         margin: 0;
-        background: var(--ink);
-        color: var(--text);
+        background: var(--color-q-shell, var(--surface));
+        color: var(--color-q-ink, var(--text));
         font-family: var(--sans);
         -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
       }
-      ::selection { background: rgb(255 194 75 / .35); color: #fff; }
-      h1, h2, h3 { font-weight: 300; }
+      main {
+        position: relative;
+      }
+      img { max-width: 100%; height: auto; }
+      ::selection { background: rgb(0 179 167 / 0.18); color: var(--primary); }
+      ::-webkit-scrollbar { width: 12px; height: 12px; }
+      ::-webkit-scrollbar-track { background: var(--surface-soft); }
+      ::-webkit-scrollbar-thumb {
+        background: rgb(13 62 105 / 0.28);
+        border: 3px solid var(--surface-soft);
+        border-radius: 999px;
+      }
+      :focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
     </style>
   </head>
   <body>
-    <main>
+    <main id="top">
       <HeroScroll />
-      <ServicesLights />
-      <Story />
-      <Expertise />
-      <Projects />
-      <SiteFooter />
+      <Pillars client:visible />
+      <LightingEffect client:visible />
+      <Engineering client:visible />
+      <Sectors client:visible />
+      <Projects client:visible />
+      <FounderStatement client:visible />
+      <FinalCta client:visible />
     </main>
-    <script>
-      import '../scripts/site-anim';
-    </script>
+    <Footer client:visible />
   </body>
 </html>

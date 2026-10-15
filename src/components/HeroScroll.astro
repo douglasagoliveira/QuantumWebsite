@@ -21,7 +21,7 @@ const content = {
     { label: 'Maintenance', href: `${site}/maintenance/` },
     { label: 'About Us', href: `${site}/welcome-to-quantum-electrical-solutions/` },
   ],
-  poster: `${base}hero/01-poster.jpg`,
+  poster: `${base}hero/01-poster.webp`,
   seq: { dir: `${base}hero/frames`, count: 163 },
   copy1: {
     eyebrow: 'Quantum Electrical & Technological Services',
@@ -53,9 +53,9 @@ const content = {
     italic: 'Zero Timeline Surprises.',
     text: 'High-End Operational Rigor.',
     cards: [
-      { title: 'Design and Constructional', img: `${base}hero/card-living.jpg`, href: `${site}/electrical-instalations/` },
-      { title: 'Smart Automation & Architectural Lighting', img: `${base}hero/card-pavilion.jpg`, href: `${site}/maintenance/` },
-      { title: 'Electronic Security & Sports Lighting Infrastructure', img: `${base}hero/card-night.jpg`, href: `${site}/sports-lighting-quantum/` },
+      { title: 'Design and Constructional', img: `${base}hero/card-living.webp`, href: `${site}/electrical-instalations/` },
+      { title: 'Smart Automation & Architectural Lighting', img: `${base}hero/card-pavilion.webp`, href: `${site}/maintenance/` },
+      { title: 'Electronic Security & Sports Lighting Infrastructure', img: `${base}hero/card-night.webp`, href: `${site}/sports-lighting-quantum/` },
     ],
   },
 };
@@ -81,7 +81,7 @@ const content = {
 
   <header class="nav" data-nav>
     <a class="nav__brand" href={site} aria-label="Quantum Electrical & Technological Services">
-      <img src={content.logo} alt="" width="4362" height="1158" decoding="async" />
+      <img src={content.logo} alt="" width="4348" height="1158" decoding="async" />
     </a>
     <nav class="nav__links" aria-label="Primary">
       {content.nav.map((l) => <a href={l.href}>{l.label}</a>)}
@@ -90,7 +90,7 @@ const content = {
   </header>
 
   <h1 class="title" aria-label="Quantum Electrical & Technological Services">
-    <img class="title__logo" src={content.logo} alt="" data-title-logo width="4362" height="1158" decoding="async" />
+    <img class="title__logo" src={content.logo} alt="" data-title-logo width="4348" height="1158" decoding="async" />
   </h1>
 
   <!-- Bloco 1 -->
@@ -446,7 +446,7 @@ const content = {
               show(target);
             }
           };
-          img.src = `${dir}/frame_${pad(i)}.jpg`;
+          img.src = `${dir}/frame_${pad(i)}.webp`;
           imgs[i] = img;
         }
 

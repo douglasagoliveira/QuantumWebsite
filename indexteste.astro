@@ -1,0 +1,89 @@
+---
+import '@fontsource/urbanist/400.css';
+import '@fontsource/urbanist/500.css';
+import '@fontsource/urbanist/600.css';
+import '@fontsource/urbanist/700.css';
+import HeroScroll from '../components/HeroScroll.astro';
+import ServicesLights from '../components/sections/ServicesLights.astro';
+import LightingEffect from '../components/sections/LightingEffect.astro';
+import Story from '../components/sections/Story.astro';
+import Expertise from '../components/sections/Expertise.astro';
+import Projects from '../components/sections/Projects.astro';
+import SiteFooter from '../components/sections/SiteFooter.astro';
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Quantum Electrical & Technological Services</title>
+    <meta name="description" content="Seamless Integration from Blueprint to Handover." />
+    <style is:global>
+      :root {
+        --primary: #0d3e69;
+        --secondary: #2c426a;
+        --accent: #00b3a7;
+        --accent-dark: #005852;
+        --text: #46536b;
+        --muted: #738c88;
+        --surface: #ffffff;
+        --surface-soft: #f5f9ff;
+        --surface-tint: #eef6ff;
+        --line: rgb(13 62 105 / 0.12);
+        --line-strong: rgb(13 62 105 / 0.2);
+        --shadow-soft: 0 22px 60px -34px rgb(13 62 105 / 0.18);
+        --shadow-card: 0 28px 80px -42px rgb(13 62 105 / 0.22);
+        --shadow-teal: 0 0 11px 0 #005852;
+        --radius-sm: 12px;
+        --radius-md: 15px;
+        --radius-pill: 999px;
+        --section-space: clamp(4.5rem, 10vw, 8rem);
+        --curve: cubic-bezier(0.22, 1, 0.36, 1);
+        --sans: 'Urbanist', system-ui, sans-serif;
+      }
+      *, *::before, *::after { box-sizing: border-box; }
+      html {
+        background: var(--surface);
+        color-scheme: light;
+      }
+      body {
+        margin: 0;
+        background: var(--surface);
+        color: var(--text);
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+      main {
+        position: relative;
+      }
+      img { max-width: 100%; height: auto; }
+      ::selection { background: rgb(0 179 167 / 0.18); color: var(--primary); }
+      ::-webkit-scrollbar { width: 12px; height: 12px; }
+      ::-webkit-scrollbar-track { background: var(--surface-soft); }
+      ::-webkit-scrollbar-thumb {
+        background: rgb(13 62 105 / 0.28);
+        border: 3px solid var(--surface-soft);
+        border-radius: 999px;
+      }
+      :focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <HeroScroll />
+      <ServicesLights />
+      <LightingEffect />
+      <Story />
+      <Expertise />
+      <Projects />
+      <SiteFooter />
+    </main>
+    <script>
+      import '../scripts/site-anim';
+    </script>
+  </body>
+</html>

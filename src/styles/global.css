@@ -1,0 +1,292 @@
+@import "tailwindcss";
+
+/* ============================================================
+   DESIGN.md — Quantum Electrical Solutions
+   Token layer. Colours extracted from the live brand.
+   ============================================================ */
+@theme {
+  /* Institutional */
+  --color-q-navy: #0d3e69;
+  --color-q-navy-900: #08294a;
+  --color-q-navy-700: #0b3459;
+  --color-q-navy-100: #e3eaf2;
+  --color-q-teal: #00b3a6;
+  --color-q-teal-600: #00968b;
+  --color-q-teal-100: #afdbda;
+
+  /* Neutrals */
+  --color-q-white: #ffffff;
+  --color-q-shell: #f7f8f8;
+  --color-q-line: #e6e8e8;
+  --color-q-slate: #46536b;
+  --color-q-ink: #0a0808;
+
+  /* Light-temperature scale — 3rd fold ONLY */
+  --color-q-2200k: #ff9a3c;
+  --color-q-2700k: #ffb45e;
+  --color-q-3000k: #ffd9a0;
+  --color-q-dusk: #16283c;
+
+  /* Type */
+  --font-sans: "Urbanist", "Urbanist Fallback", ui-sans-serif, system-ui,
+    -apple-system, "Segoe UI", Helvetica, sans-serif;
+  --font-serif: "Cormorant Garamond", "Times New Roman", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Motion */
+  --ease-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-breathe: breathe 7s var(--ease-quint) infinite;
+  --animate-halo: halo 2.8s var(--ease-quint) infinite;
+  --animate-marquee: marquee 48s linear infinite;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.42;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.72;
+    transform: scale(1.045);
+  }
+}
+
+@keyframes halo {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.75;
+  }
+  70% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes kenburns {
+  from {
+    transform: scale(1.01) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.075) translate3d(-1.2%, -0.8%, 0);
+  }
+}
+
+/* ------------------------------------------------------------ */
+@layer base {
+  :root {
+    --q-hairline: rgba(13, 62, 105, 0.12);
+    --q-hairline-soft: rgba(13, 62, 105, 0.07);
+    color-scheme: light;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-q-shell);
+    color: var(--color-q-ink);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-sans);
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: var(--color-q-teal);
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-q-teal);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@utility u-balance {
+  text-wrap: balance;
+}
+
+@utility u-pretty {
+  text-wrap: pretty;
+}
+
+@utility u-tabular {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+@utility u-display {
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+  font-weight: 800;
+  line-height: 0.94;
+}
+
+@utility u-h2 {
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+  font-weight: 700;
+  line-height: 1.02;
+}
+
+/* Eyebrow / technical label — IBM Plex Mono */
+@utility u-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+@utility u-hairline {
+  border-color: var(--q-hairline);
+}
+
+/* Scroll reveal -------------------------------------------------- */
+@utility reveal {
+  opacity: 0;
+  transform: translate3d(0, 26px, 0);
+  transition:
+    opacity 620ms var(--ease-quint),
+    transform 780ms var(--ease-quint);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+@utility reveal-in {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Line-mask reveal for display headings */
+@utility line-mask {
+  display: block;
+  overflow: hidden;
+  /* room for descenders, given back with a negative margin */
+  padding-bottom: 0.18em;
+  margin-bottom: -0.18em;
+}
+
+@utility line-inner {
+  display: block;
+  transform: translate3d(0, 135%, 0) rotate(2deg);
+  transition: transform 900ms var(--ease-quint);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+@utility line-in {
+  transform: translate3d(0, 0, 0) rotate(0deg);
+}
+
+/* Ken Burns on hero media of the lighting fold */
+@utility u-kenburns {
+  animation: kenburns 22s var(--ease-quint) infinite alternate;
+}
+
+/* Fine architectural grid backdrop */
+@utility u-grid-paper {
+  background-image:
+    linear-gradient(to right, var(--q-hairline-soft) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--q-hairline-soft) 1px, transparent 1px);
+  background-size: 72px 72px;
+}
+
+@utility u-grid-paper-dark {
+  background-image:
+    linear-gradient(to right, rgba(175, 219, 218, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(175, 219, 218, 0.07) 1px, transparent 1px);
+  background-size: 88px 88px;
+}
+
+/* Range input reset (dimmer) */
+@utility u-range {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  cursor: pointer;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 30px;
+    width: 14px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, #ffffff 0%, #d9dee3 100%);
+    border: 1px solid rgba(8, 41, 74, 0.35);
+    box-shadow:
+      0 1px 2px rgba(8, 41, 74, 0.4),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+    margin-top: -11px;
+  }
+
+  &::-moz-range-thumb {
+    height: 30px;
+    width: 14px;
+    border-radius: 2px;
+    background: linear-gradient(180deg, #ffffff 0%, #d9dee3 100%);
+    border: 1px solid rgba(8, 41, 74, 0.35);
+    box-shadow: 0 1px 2px rgba(8, 41, 74, 0.4);
+  }
+
+  &::-webkit-slider-runnable-track {
+    height: 8px;
+    background: transparent;
+  }
+
+  &::-moz-range-track {
+    height: 8px;
+    background: transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .line-inner {
+    transform: none !important;
+  }
+}

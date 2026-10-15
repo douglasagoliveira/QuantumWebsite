@@ -6,8 +6,9 @@ gsap.registerPlugin(ScrollTrigger);
 const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 if (!reduce) {
-  // Revelações simples
+  // Revelações simples (exclui o hero, que tem scrub próprio)
   gsap.utils.toArray<HTMLElement>('[data-reveal]').forEach((el) => {
+    if (el.closest('[data-hero]')) return;
     gsap.from(el, {
       autoAlpha: 0,
       y: 42,
@@ -17,8 +18,9 @@ if (!reduce) {
     });
   });
 
-  // Grupos com stagger (cards, listas)
+  // Grupos com stagger (cards, listas) (exclui o hero)
   gsap.utils.toArray<HTMLElement>('[data-reveal-group]').forEach((group) => {
+    if (group.closest('[data-hero]')) return;
     gsap.from(Array.from(group.children), {
       autoAlpha: 0,
       y: 44,
@@ -32,13 +34,16 @@ if (!reduce) {
   // Palavras acendendo com o scrub
   gsap.utils.toArray<HTMLElement>('[data-light-words]').forEach((el) => {
     const words = (el.textContent ?? '').trim().split(/\s+/);
+    const fromColor = el.dataset.lightFrom ?? 'rgb(233 238 251 / .14)';
+    const toColor = el.dataset.lightTo ?? '#ffffff';
+    const textShadow = el.dataset.lightShadow ?? '0 0 26px rgb(255 194 75 / .45)';
     el.innerHTML = words.map((w) => `<span class="w">${w}</span>`).join(' ');
     gsap.fromTo(
       el.querySelectorAll<HTMLElement>('.w'),
-      { color: 'rgb(233 238 251 / .14)' },
+      { color: fromColor },
       {
-        color: '#ffffff',
-        textShadow: '0 0 26px rgb(255 194 75 / .45)',
+        color: toColor,
+        textShadow,
         stagger: 0.18,
         ease: 'none',
         scrollTrigger: { trigger: el, start: 'top 78%', end: 'bottom 48%', scrub: 0.6 },
