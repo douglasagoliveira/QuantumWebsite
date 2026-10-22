@@ -1,0 +1,228 @@
+---
+/**
+ * PageHeader — institutional header for the inner pages.
+ * The homepage hero keeps its own nav; this one carries the same
+ * labels, logo and phone CTA on a light, sticky glass rail.
+ */
+const base = import.meta.env.BASE_URL;
+const site = 'https://quantumelectricalsolutions.com.au';
+
+const nav = [
+  { label: 'Electrical Services', href: `${base}electrical-instalations/`, current: true },
+  { label: 'Sports Lighting', href: `${site}/sports-lighting-quantum/` },
+  { label: 'Maintenance', href: `${site}/maintenance/` },
+  { label: 'About Us', href: `${site}/welcome-to-quantum-electrical-solutions/` },
+];
+
+const phone = { label: '0406 025 213', href: 'tel:61406025213' };
+---
+
+<header class="page-header">
+  <div class="page-header__inner">
+    <a class="page-header__brand" href={`${base}`} aria-label="Quantum Electrical & Technological Services">
+      <img
+        src={`${base}logo-azul-quantum-2026.png`}
+        alt=""
+        width="4348"
+        height="1158"
+        decoding="async"
+      />
+    </a>
+
+    <nav class="page-header__links" aria-label="Primary">
+      {nav.map((l) => (
+        <a
+          href={l.href}
+          class:list={['page-header__link', l.current && 'is-current']}
+          aria-current={l.current ? 'page' : undefined}
+        >
+          {l.label}
+          {l.current && <span class="page-header__mark" aria-hidden="true"></span>}
+        </a>
+      ))}
+    </nav>
+
+    <div class="page-header__actions">
+      <a class="page-header__cta" href={phone.href}>{phone.label}</a>
+
+      <details class="page-header__menu">
+        <summary aria-label="Open menu">
+          <span class="page-header__bars" aria-hidden="true"><i></i><i></i></span>
+        </summary>
+        <div class="page-header__drawer">
+          <p class="page-header__drawer-label">Menu</p>
+          <ul>
+            <li><a href={`${base}`}>Home</a></li>
+            {nav.map((l) => (
+              <li>
+                <a href={l.href} aria-current={l.current ? 'page' : undefined}>{l.label}</a>
+              </li>
+            ))}
+          </ul>
+          <a class="page-header__drawer-phone" href={phone.href}>{phone.label}</a>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>
+
+<style>
+  .page-header {
+    position: sticky;
+    top: 0;
+    z-index: 60;
+    background: rgb(247 248 248 / 0.88);
+    border-bottom: 1px solid rgb(13 62 105 / 0.12);
+    -webkit-backdrop-filter: saturate(1.4) blur(14px);
+    backdrop-filter: saturate(1.4) blur(14px);
+  }
+
+  .page-header__inner {
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+    max-width: 1440px;
+    padding: 0.85rem 1.25rem;
+  }
+
+  .page-header__brand { display: block; margin-right: auto; }
+  .page-header__brand img {
+    display: block;
+    height: clamp(1.5rem, 2.3vw, 1.95rem);
+    width: auto;
+  }
+
+  .page-header__links {
+    display: none;
+    align-items: center;
+    gap: clamp(1.1rem, 2.2vw, 2.2rem);
+  }
+
+  .page-header__link {
+    position: relative;
+    padding-block: 0.35rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    letter-spacing: -0.008em;
+    color: rgb(70 83 107 / 0.92);
+    text-decoration: none;
+    transition: color 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .page-header__link:hover { color: var(--color-q-navy, #0d3e69); }
+  .page-header__link.is-current { color: var(--color-q-navy, #0d3e69); }
+
+  .page-header__mark {
+    position: absolute;
+    left: 0;
+    bottom: -0.1rem;
+    height: 2px;
+    width: 100%;
+    background: var(--color-q-teal, #00b3a6);
+    transform-origin: left center;
+  }
+
+  .page-header__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+  }
+
+  .page-header__cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.62rem 1.05rem;
+    border-radius: 3px;
+    background: var(--color-q-navy, #0d3e69);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background-color 400ms cubic-bezier(0.22, 1, 0.36, 1),
+      color 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .page-header__cta:hover {
+    background: var(--color-q-teal, #00b3a6);
+    color: var(--color-q-navy-900, #08294a);
+  }
+
+  /* ── Mobile drawer ─────────────────────────────────────── */
+  .page-header__menu { position: relative; display: block; }
+  .page-header__menu > summary {
+    display: grid;
+    place-items: center;
+    width: 2.35rem;
+    height: 2.35rem;
+    border: 1px solid rgb(13 62 105 / 0.18);
+    border-radius: 3px;
+    cursor: pointer;
+    list-style: none;
+  }
+  .page-header__menu > summary::-webkit-details-marker { display: none; }
+  .page-header__bars { display: grid; gap: 4px; }
+  .page-header__bars i {
+    display: block;
+    width: 15px;
+    height: 1px;
+    background: var(--color-q-navy, #0d3e69);
+    transition: transform 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .page-header__menu[open] .page-header__bars i:first-child { transform: translateY(2.5px) rotate(45deg); }
+  .page-header__menu[open] .page-header__bars i:last-child { transform: translateY(-2.5px) rotate(-45deg); }
+
+  .page-header__drawer {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.55rem);
+    width: min(17rem, calc(100vw - 2.5rem));
+    padding: 1.1rem 1.15rem 1.2rem;
+    background: #fff;
+    border: 1px solid rgb(13 62 105 / 0.12);
+    border-radius: 6px;
+    box-shadow: 0 30px 70px -34px rgb(8 41 74 / 0.42);
+  }
+  .page-header__drawer-label {
+    margin: 0 0 0.8rem;
+    font-family: var(--font-mono, monospace);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgb(13 62 105 / 0.45);
+  }
+  .page-header__drawer ul { margin: 0; padding: 0; list-style: none; }
+  .page-header__drawer li + li { border-top: 1px solid rgb(13 62 105 / 0.08); }
+  .page-header__drawer li a {
+    display: block;
+    padding: 0.68rem 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-q-navy, #0d3e69);
+    text-decoration: none;
+  }
+  .page-header__drawer li a[aria-current='page'] { color: var(--color-q-teal-600, #00968b); }
+  .page-header__drawer-phone {
+    display: block;
+    margin-top: 0.9rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid rgb(13 62 105 / 0.12);
+    font-family: var(--font-mono, monospace);
+    font-size: 0.8rem;
+    color: var(--color-q-navy, #0d3e69);
+    text-decoration: none;
+  }
+
+  @media (min-width: 900px) {
+    .page-header__inner { padding: 1rem 2rem; }
+    .page-header__links { display: flex; }
+    .page-header__menu { display: none; }
+  }
+
+  @media (min-width: 1280px) {
+    .page-header__inner { padding-inline: 3.5rem; }
+  }
+</style>

@@ -1,0 +1,421 @@
+---
+/**
+ * PageFooter — institutional bookend for the inner pages.
+ * Same navy stage, hairlines and ghost wordmark as the homepage
+ * footer, with navigation scoped to the subpage.
+ */
+const base = import.meta.env.BASE_URL;
+const site = 'https://quantumelectricalsolutions.com.au';
+const year = new Date().getFullYear();
+
+const contact = {
+  phoneDisplay: '0406 025 213',
+  phoneHref: 'tel:+61406025213',
+  email: 'info@quantumelec.net',
+  region: 'Sydney · New South Wales · Australia',
+};
+
+const columns = [
+  {
+    title: 'Services',
+    links: [
+      { label: 'Electrical services', href: `${base}electrical-instalations/` },
+      { label: 'Maintenance', href: `${site}/maintenance/` },
+      { label: 'Sports lighting', href: `${site}/sports-lighting-quantum/` },
+      { label: 'Architectural lighting', href: `${base}#capabilities` },
+      { label: 'Home automation', href: `${base}#capabilities` },
+      { label: 'Security & CCTV', href: `${base}#capabilities` },
+    ],
+  },
+  {
+    title: 'Company',
+    links: [
+      { label: 'About Quantum', href: `${site}/welcome-to-quantum-electrical-solutions/` },
+      { label: 'Our process', href: `${base}#engineering` },
+      { label: 'Projects', href: `${base}#projects` },
+      { label: 'Home', href: `${base}` },
+    ],
+  },
+  {
+    title: 'Coverage',
+    links: [
+      { label: 'Sydney CBD', href: `${base}#sectors` },
+      { label: 'North Shore', href: `${base}#sectors` },
+      { label: 'Eastern Suburbs', href: `${base}#sectors` },
+      { label: 'Northern Beaches', href: `${base}#sectors` },
+      { label: 'Inner West', href: `${base}#sectors` },
+      { label: 'Greater Western Sydney', href: `${base}#sectors` },
+    ],
+  },
+];
+
+const onPage = [
+  { label: 'Electrical services', href: '#top' },
+  { label: 'Two modalities', href: '#modalities' },
+  { label: 'Capabilities', href: '#capabilities' },
+  { label: 'Installations', href: '#installations' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'Contact', href: '#contact' },
+];
+---
+
+<footer class="page-footer">
+  <div aria-hidden class="page-footer__backdrop">
+    <div class="u-grid-paper-dark page-footer__grid"></div>
+    <div class="animate-breathe page-footer__glow"></div>
+    <div class="page-footer__rule"></div>
+  </div>
+
+  <div class="page-footer__inner">
+    <div class="page-footer__top">
+      <div class="page-footer__brand">
+        <img
+          src={`${base}logo-branco-quantum-2026-hor.png`}
+          alt="Quantum Electrical Solutions"
+          width="4348"
+          height="1158"
+          loading="lazy"
+          decoding="async"
+        />
+        <p class="page-footer__pitch">
+          Specialists in electrical and automation works — power infrastructure,
+          architectural lighting and high-end control, delivered under a single
+          point of accountability across Sydney.
+        </p>
+
+        <ul class="page-footer__contact">
+          <li>
+            <a href={contact.phoneHref} class="page-footer__contact-row">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="page-footer__icon">
+                <path d="M8.1 3.4H4.9c-.9 0-1.6.8-1.5 1.7.6 8.4 6.5 14.3 14.9 14.9.9.1 1.7-.6 1.7-1.5v-3.2l-4-1.5-1.9 1.9a13.4 13.4 0 0 1-5.6-5.6l1.9-1.9-2.3-4.8Z" />
+              </svg>
+              <span class="page-footer__phone">{contact.phoneDisplay}</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="page-footer__arrow"><path d="M3.6 12h16.8" /><path d="m14.2 5.8 6.2 6.2-6.2 6.2" /></svg>
+            </a>
+          </li>
+          <li>
+            <a href={`mailto:${contact.email}`} class="page-footer__contact-row">
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="page-footer__icon">
+                <rect x="2.8" y="5" width="18.4" height="14" rx="1" />
+                <path d="m2.8 6.4 9.2 6.4 9.2-6.4" />
+              </svg>
+              <span class="page-footer__email">{contact.email}</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true" class="page-footer__arrow"><path d="M3.6 12h16.8" /><path d="m14.2 5.8 6.2 6.2-6.2 6.2" /></svg>
+            </a>
+          </li>
+          <li class="page-footer__contact-row page-footer__contact-row--static">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="page-footer__icon">
+              <path d="M12 21.4s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z" />
+              <circle cx="12" cy="10.2" r="2.6" />
+            </svg>
+            <span class="page-footer__region">{contact.region}</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="page-footer__columns">
+        {columns.map((col) => (
+          <nav aria-label={col.title}>
+            <h3 class="u-eyebrow page-footer__col-title">{col.title}</h3>
+            <ul>
+              {col.links.map((l) => (
+                <li>
+                  <a href={l.href}>
+                    <span aria-hidden class="page-footer__link-rule"></span>
+                    {l.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        ))}
+      </div>
+
+      <div class="page-footer__page-nav">
+        <h3 class="u-eyebrow page-footer__col-title">On this page</h3>
+        <ul>
+          {onPage.map((n) => (
+            <li><a href={n.href}>{n.label}</a></li>
+          ))}
+        </ul>
+
+        <a href="#top" class="page-footer__back">
+          Back to top
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="page-footer__back-arrow">
+            <path d="M3.6 12h16.8" />
+            <path d="m14.2 5.8 6.2 6.2-6.2 6.2" />
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div aria-hidden class="page-footer__ghost">
+      <span>Quantum</span>
+    </div>
+
+    <div class="page-footer__bottom">
+      <p class="u-eyebrow">© {year} Quantum Electrical &amp; Technological Services</p>
+      <div class="page-footer__seals">
+        <span class="u-eyebrow">Licensed electrical contractor · NSW</span>
+        <span class="u-eyebrow">AS/NZS 3000</span>
+        <span class="u-eyebrow">Fully insured</span>
+      </div>
+      <p class="u-eyebrow">Sydney · Australia</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .page-footer {
+    position: relative;
+    overflow: hidden;
+    background: var(--color-q-navy-900, #08294a);
+    color: #fff;
+  }
+
+  .page-footer__backdrop { position: absolute; inset: 0; pointer-events: none; }
+  .page-footer__grid { position: absolute; inset: 0; opacity: 0.6; }
+  .page-footer__glow {
+    position: absolute;
+    left: 25%;
+    bottom: -10rem;
+    height: 520px;
+    width: 520px;
+    border-radius: 9999px;
+    filter: blur(130px);
+    background: radial-gradient(circle, rgba(0, 179, 166, 0.26) 0%, rgba(0, 179, 166, 0) 70%);
+  }
+  .page-footer__rule {
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 1px;
+    background: rgba(0, 179, 166, 0.45);
+  }
+
+  .page-footer__inner {
+    position: relative;
+    margin-inline: auto;
+    max-width: 1440px;
+    padding-inline: 1.25rem;
+  }
+
+  .page-footer__top {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3.5rem 4rem;
+    padding-block: 4rem;
+  }
+
+  .page-footer__brand img {
+    display: block;
+    height: 2.75rem;
+    width: auto;
+  }
+
+  .page-footer__pitch {
+    margin: 1.75rem 0 0;
+    max-width: 38ch;
+    font-size: 0.905rem;
+    line-height: 1.72;
+    color: rgb(175 219 218 / 0.68);
+    text-wrap: pretty;
+  }
+
+  .page-footer__contact {
+    margin: 2.25rem 0 0;
+    padding: 0;
+    list-style: none;
+    border-top: 1px solid rgb(175 219 218 / 0.14);
+  }
+
+  .page-footer__contact-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding-block: 1rem;
+    border-bottom: 1px solid rgb(175 219 218 / 0.14);
+    text-decoration: none;
+    transition: padding-left 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .page-footer__contact-row:hover { padding-left: 0.5rem; }
+
+  .page-footer__icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: var(--color-q-teal, #00b3a6);
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .page-footer__phone {
+    flex: 1;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    font-variant-numeric: tabular-nums lining-nums;
+    color: #fff;
+  }
+  .page-footer__email {
+    flex: 1;
+    font-size: 0.94rem;
+    font-weight: 600;
+    color: rgb(255 255 255 / 0.88);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .page-footer__region {
+    flex: 1;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.35;
+    color: rgb(175 219 218 / 0.72);
+  }
+  .page-footer__arrow {
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    fill: none;
+    stroke: rgb(175 219 218 / 0.35);
+    stroke-width: 1.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: stroke 500ms, transform 500ms;
+  }
+  .page-footer__back-arrow {
+    width: 15px;
+    height: 15px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.4;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transform: rotate(-90deg);
+    transition: transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .page-footer__back:hover .page-footer__back-arrow { transform: rotate(-90deg) translateX(3px); }
+  .page-footer__contact-row:hover .page-footer__arrow {
+    stroke: var(--color-q-teal, #00b3a6);
+    transform: translateX(3px);
+  }
+
+  .page-footer__columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3rem 2.5rem;
+  }
+
+  .page-footer__col-title {
+    margin: 0 0 1.5rem;
+    color: var(--color-q-teal, #00b3a6);
+  }
+
+  .page-footer__columns ul,
+  .page-footer__page-nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .page-footer__columns a,
+  .page-footer__page-nav a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.845rem;
+    font-weight: 500;
+    line-height: 1.35;
+    color: rgb(175 219 218 / 0.62);
+    text-decoration: none;
+    transition: color 400ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .page-footer__columns a:hover,
+  .page-footer__page-nav a:hover { color: #fff; }
+
+  .page-footer__link-rule {
+    display: block;
+    width: 0;
+    height: 1px;
+    background: var(--color-q-teal, #00b3a6);
+    transition: width 500ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .page-footer__columns a:hover .page-footer__link-rule { width: 0.75rem; }
+
+  .page-footer__back {
+    margin-top: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgb(175 219 218 / 0.22);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #fff;
+    text-decoration: none;
+    transition: border-color 500ms, background-color 500ms, color 500ms;
+  }
+  .page-footer__back:hover {
+    border-color: var(--color-q-teal, #00b3a6);
+    background: var(--color-q-teal, #00b3a6);
+    color: var(--color-q-navy-900, #08294a);
+  }
+
+  .page-footer__ghost {
+    position: relative;
+    overflow: hidden;
+    user-select: none;
+  }
+  .page-footer__ghost span {
+    display: block;
+    white-space: nowrap;
+    text-align: center;
+    font-size: clamp(4.5rem, 19.5vw, 19rem);
+    font-weight: 800;
+    line-height: 0.78;
+    letter-spacing: -0.05em;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(175, 219, 218, 0.17);
+  }
+
+  .page-footer__bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.9rem 2rem;
+    padding-block: 1.75rem;
+    border-top: 1px solid rgb(175 219 218 / 0.14);
+  }
+  .page-footer__bottom p,
+  .page-footer__seals span {
+    font-size: 9.5px;
+    color: rgb(175 219 218 / 0.42);
+  }
+  .page-footer__seals {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem 1.75rem;
+  }
+
+  @media (min-width: 640px) {
+    .page-footer__inner { padding-inline: 2rem; }
+    .page-footer__top { padding-block: 5rem; }
+    .page-footer__columns { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+
+  @media (min-width: 1024px) {
+    .page-footer__inner { padding-inline: 3.5rem; }
+    .page-footer__top {
+      grid-template-columns: 4fr 6fr 2fr;
+      gap: 0 4rem;
+      padding-block: 5rem;
+    }
+  }
+</style>

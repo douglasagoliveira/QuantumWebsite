@@ -1,0 +1,106 @@
+---
+import '@fontsource/urbanist/400.css';
+import '@fontsource/urbanist/500.css';
+import '@fontsource/urbanist/600.css';
+import '@fontsource/urbanist/700.css';
+import '@fontsource/urbanist/800.css';
+import '@fontsource/cormorant-garamond/400.css';
+import '@fontsource/cormorant-garamond/500.css';
+import '@fontsource/cormorant-garamond/600.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '../styles/global.css';
+
+import PageHeader from '../components/sections/PageHeader.astro';
+import ServicesHero from '../components/sections/page/ServicesHero';
+import Modalities from '../components/sections/page/Modalities';
+import Capabilities from '../components/sections/page/Capabilities';
+import Installations from '../components/sections/page/Installations';
+import Work from '../components/sections/page/Work';
+import FinalCta from '../components/sections/FinalCta';
+import PageFooter from '../components/sections/page/PageFooter.astro';
+---
+
+<!doctype html>
+<html lang="en-AU">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Electrical Services — Quantum Electrical &amp; Technological Services</title>
+    <meta
+      name="description"
+      content="Integrated electrical engineering with frictionless constructional and design delivery across Sydney — installations, main switchboards, lighting control and compliance documentation."
+    />
+    <link rel="canonical" href="https://quantumelectricalsolutions.com.au/electrical-instalations/" />
+    <link rel="icon" type="image/png" href="/logo-azul-quantum-2026.png" />
+    <style is:global>
+      :root {
+        --primary: #0d3e69;
+        --secondary: #2c426a;
+        --accent: #00b3a7;
+        --accent-dark: #005852;
+        --text: #46536b;
+        --muted: #738c88;
+        --surface: #ffffff;
+        --surface-soft: #f5f9ff;
+        --surface-tint: #eef6ff;
+        --line: rgb(13 62 105 / 0.12);
+        --line-strong: rgb(13 62 105 / 0.2);
+        --shadow-soft: 0 22px 60px -34px rgb(13 62 105 / 0.18);
+        --shadow-card: 0 28px 80px -42px rgb(13 62 105 / 0.22);
+        --shadow-teal: 0 0 11px 0 #005852;
+        --radius-sm: 12px;
+        --radius-md: 15px;
+        --radius-pill: 999px;
+        --section-space: clamp(4.5rem, 10vw, 8rem);
+        --curve: cubic-bezier(0.22, 1, 0.36, 1);
+        --sans: 'Urbanist', system-ui, sans-serif;
+      }
+      *, *::before, *::after { box-sizing: border-box; }
+      html {
+        background: var(--surface);
+        color-scheme: light;
+        scroll-behavior: smooth;
+      }
+      body {
+        margin: 0;
+        background: var(--color-q-shell, var(--surface));
+        color: var(--color-q-ink, var(--text));
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+      main {
+        position: relative;
+      }
+      img { max-width: 100%; height: auto; }
+      ::selection { background: rgb(0 179 167 / 0.18); color: var(--primary); }
+      ::-webkit-scrollbar { width: 12px; height: 12px; }
+      ::-webkit-scrollbar-track { background: var(--surface-soft); }
+      ::-webkit-scrollbar-thumb {
+        background: rgb(13 62 105 / 0.28);
+        border: 3px solid var(--surface-soft);
+        border-radius: 999px;
+      }
+      :focus-visible {
+        outline: 2px solid var(--accent);
+        outline-offset: 3px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <PageHeader />
+    <main id="top">
+      <ServicesHero client:visible />
+      <Modalities client:visible />
+      <Capabilities client:visible />
+      <Installations client:visible />
+      <Work client:visible />
+      <FinalCta client:visible />
+    </main>
+    <PageFooter />
+  </body>
+</html>
