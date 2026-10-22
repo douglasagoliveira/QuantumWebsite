@@ -8,7 +8,7 @@ export const ELECTRICAL_PAGE = {
   title: "Electrical Services — Quantum Electrical & Technological Services",
   description:
     "Quantum Electrical Solutions has redefined electrical service delivery by evolving from basic site installation into a constructional and design engineering partnership.",
-  eyebrow: "Electrical services",
+  eyebrow: "Quantum Electrical & Technological Services",
   eyebrowSub: "Sydney · Australia",
   headline: ["Integrated", "electrical", "engineering"],
   subline: "Frictionless constructional and design",

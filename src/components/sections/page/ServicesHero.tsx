@@ -43,6 +43,25 @@ export default function ServicesHero() {
           {/* ── Copy ─────────────────────────────────────────── */}
           <div className="lg:col-span-6">
             <Reveal>
+              <nav aria-label="Breadcrumb" className="mb-7">
+                <ol className="flex items-center gap-2.5">
+                  <li>
+                    <a
+                      href="/"
+                      className="u-eyebrow text-[9.5px] text-q-navy/35 transition-colors duration-400 hover:text-q-navy"
+                    >
+                      Home
+                    </a>
+                  </li>
+                  <li aria-hidden className="h-px w-4 bg-q-navy/22" />
+                  <li aria-current="page" className="u-eyebrow text-[9.5px] text-q-navy/60">
+                    Electrical services
+                  </li>
+                </ol>
+              </nav>
+            </Reveal>
+
+            <Reveal delay={60}>
               <div className="flex flex-wrap items-center gap-3">
                 <span className="u-eyebrow text-q-navy/55">{eyebrow}</span>
                 <span aria-hidden className="h-px w-6 shrink-0 bg-q-navy/25" />

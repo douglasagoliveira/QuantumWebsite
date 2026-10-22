@@ -64,7 +64,7 @@ export default function Installations() {
           <div className="lg:col-span-5">
             <div className="lg:sticky lg:top-28">
               <Reveal>
-                <Eyebrow tone="teal">{ELECTRICAL_PAGE.eyebrow}</Eyebrow>
+                <Eyebrow tone="teal">Electrical services</Eyebrow>
               </Reveal>
 
               <h2
