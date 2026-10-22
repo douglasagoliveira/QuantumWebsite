@@ -106,6 +106,25 @@ Homepage institucional, em camada Vitrine, para gerar contatos qualificados de b
 - [ ] A experiencia continua compreensivel com motion reduzido ou indisponivel?
 - [ ] A pagina pode ser considerada uma Vitrine completa, mesmo sem backend?
 
+## Pagina 02 — Electrical Services (`/electrical-instalations/`)
+
+Segunda pagina do site, criada sobre o mesmo sistema visual da home (a home permanece intacta). No menu, o item aparece como **Electrical Services**.
+
+- **Rota**: `/electrical-instalations/` (`src/pages/electrical-instalations.astro`).
+- **Fonte de conteudo**: pagina publicada em `quantumelectricalsolutions.com.au/electrical-instalations/`, com textos preservados em ingles australiano. Nenhum claim novo foi criado.
+- **Dados editoriais**: `src/data/electrical.ts` (hero, duas modalidades, capabilities, lista de instalacoes e projetos).
+- **Dobras**:
+  - `PageHeader`: header institucional sticky com a mesma navegacao e o mesmo telefone da home.
+  - `ServicesHero`: H1 "Integrated electrical engineering", sublinha editorial "Frictionless constructional and design" e composicao de midia com licencas reais (`478965C`, `000109137`).
+  - `Modalities`: as duas modalidades operacionais (Design e Constructional) em lista interativa com preview fixo.
+  - `Capabilities`: dobra escura controlada com os tres deliverables-chave (eCert/BCNSW, maximum demand/Ausgrid-Endeavour, SimPRO).
+  - `Installations`: registro tecnico completo das 27 instalacoes publicadas.
+  - `Work`: "Some of our projects" em galeria editorial clara.
+  - `FinalCta`: bloco de conversao reaproveitado da home, ancorado em `#contact`.
+  - `PageFooter`: footer navy com navegacao da subpagina e links de servico.
+- **Regras**: a hero/header da home nao foram alterados; o header novo e exclusivo da subpagina e vive em `src/components/sections/PageHeader.astro`.
+- **Formulario**: reaproveita `FinalCta` (mesma validacao de nome, email e telefone).
+
 ## Fora da versao 1
 
 - Banco de dados para leads.
@@ -114,5 +133,5 @@ Homepage institucional, em camada Vitrine, para gerar contatos qualificados de b
 - Envio real de emails pelo formulario.
 - Pagamentos ou qualquer camada Caixa.
 - Dashboard interno.
-- Multi-page completo com novas paginas editoriais.
+- Multi-page completo com novas paginas editoriais (a pagina Electrical Services e a primeira excecao aprovada).
 - Area autenticada para clientes ou time interno.
